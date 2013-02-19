@@ -27,7 +27,8 @@
             data_attribute  : "original",
             skip_invisible  : true,
             appear          : null,
-            load            : null
+            load            : null,
+            errorHandler    : function() {}
         };
 
         function update() {
@@ -94,6 +95,7 @@
                         settings.appear.call(self, elements_left, settings);
                     }
                     $("<img />")
+                        .bind("error", settings.errorHandler)
                         .bind("load", function() {
                             $self
                                 .hide()
